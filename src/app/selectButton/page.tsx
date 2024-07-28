@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 
+import { useCount } from "../context/CountContext";
+
 import {
   Box,
   FormControl,
@@ -14,6 +16,8 @@ import {
 } from "@mui/material";
 
 const Home: React.FC = () => {
+  const { count, setCount } = useCount();
+
   const dummySelectItem = [
     "サンプル1",
     "サンプル2",
@@ -67,6 +71,10 @@ const Home: React.FC = () => {
       <Box key={1}>
         <Button onClick={() => submitItem()}>クリックボタン</Button>
       </Box>
+
+      <h1>Count: {count}</h1>
+      <Button onClick={() => setCount(count + 1)}>Increment</Button>
+      <Button onClick={() => setCount(count - 1)}>Decrement</Button>
     </div>
   );
 };
